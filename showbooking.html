@@ -1,0 +1,75 @@
+<html>
+<html>
+<head>
+
+</head>
+
+<body style="background-color: rgb(177, 223, 245);">
+
+    <h1 style="text-align: center;
+            color: green;
+            font-size: 40px;">Search Booking</h1>
+
+    <div style="width: 90%; margin: 20px auto;">
+        <input type="text" id="searchName"
+            placeholder="Enter Customer Name"
+            style="width: 100%; height: 50px; font-size: 22px; padding-left: 10px; border-radius: 10px;">
+        <br><br>
+        <button onclick="searchBooking()" 
+            style="text-align: center;border-radius: 10px;background-color: rgb(15, 92, 235); 
+            color: white; width: 100%; height: 6%; font-size: 30px;">
+            Search Booking
+        </button>
+    </div>
+    <div id="print" style="width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f3f3f3;
+            box-shadow: 0px 0px 10px gray;
+            font-size: 22px;
+            line-height: 35px;
+            min-height: 40%;">
+    </div>
+    <button  style="text-align: center;border-radius: 10px;background-color: rgb(15, 92, 235); 
+            color: white; width: 100%; height: 6%; font-size: 30px;" 
+            onclick="goBack()">Back</button>
+
+<script>
+
+function goBack() {
+    window.location.href = "admin_dashboard.html";
+}
+
+function searchBooking() {
+
+    var search = document.getElementById("searchName").value;
+
+    var name = localStorage.getItem("Name");
+    var phone = localStorage.getItem("Phone");
+    var room = localStorage.getItem("Room");
+    var day = localStorage.getItem("Day");
+    var date = localStorage.getItem("Date");
+
+    if (!search) {
+       document.getElementById("print").innerHTML = "<h3 style='color:red;'>Please enter a name!</h3>";
+        return;
+    }
+    if (name===search || name.toLowerCase() === search) {
+        document.getElementById("print").innerHTML = 
+            "<b>Name:</b> " + name + "<br>" +
+            "<b>Phone:</b> " + phone + "<br>" +
+            "<b>Room:</b> " + room + "<br>" +
+            "<b>Days:</b> " + day + "<br>" +
+            "<b>Date:</b> " + date + "<br>" +
+            "<b>Total Cost:</b> " + (day * 500) + " tk";
+    } 
+    else {
+        document.getElementById("print").innerHTML = "<h3 style='color:red;'>Booking Not Found!</h3>";
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head></head>
+    <body>
+  <div id="addBooking">
+  <h2 style="text-align: center; color: rgb(15, 228, 33); font-size:100px;">Add New Booking</h2>
+  <h3 style="text-align: center; color: rgb(218, 14, 14); font-size: 30px;">Please Fill Your Information Carefully</h3>
+  <input style="width: 100%; height:5%;margin: 10px 0;border-radius: 10px;border: 1px solid #000000;" type="text" id="Name" placeholder="Customer Name">
+  <input style="width: 100%; height:5%;margin: px 0;border-radius: 10px;border: 1px solid #000000;" type="tel" id="Phone" placeholder="Phone ">
+  <input style="width: 100%; height: 5%;margin: 6px 0;border-radius: 10px;border: 1px solid #000000;" type="text" id="Room" placeholder="Room ex: A101">
+  <input style="width: 100%; height:5%;margin: 6px 0;border-radius: 10px;border: 1px solid #000000;" type="number" id="Days" placeholder="Number of Days">
+  <input style="width: 100%; height: 5%;margin: px 0;border-radius: 10px;border: 1px solid #000000;" type="date" id="Date" placeholder="Date"><br><br>
+  <button type="button" style="text-align: center;border-radius: 10px;background-color: rgb(15, 92, 235); color: rgb(255, 255, 255);  width: 15%; height: 4%; font-size: 20px;" onclick="addBooking()">Submit Booking</button>
+  <button type="button" style="text-align: center;border-radius: 10px;background-color: rgb(15, 92, 235); color: rgb(255, 255, 255);  width: 15%; height: 4%; font-size: 20px; " onclick="backToMenu()">Back</button>
+</div>
+<script>
+  function backToMenu() {
+    window.location.href = "admin_dashboard.html";
+  }
+   function addBooking() {
+
+    var name = document.getElementById("Name").value;
+    var phone = document.getElementById("Phone").value;
+    var room = document.getElementById("Room").value;
+    var day = document.getElementById("Days").value;
+    var date = document.getElementById("Date").value;
+
+    if (name == "" || phone == "" || room == "" || day == "" || date == "" || room!="A101") {
+        alert("Invalid input! Please fill all fields.");
+        return;
+    }
+    var bookedRoom = localStorage.getItem("Room");
+
+    if (room === bookedRoom) {
+        alert("Sorry! This room is already booked.");
+        return;
+    }
+    localStorage.setItem("Name", name);
+    localStorage.setItem("Phone", phone);
+    localStorage.setItem("Room", room);
+    localStorage.setItem("Day", day);
+    localStorage.setItem("Date", date);
+
+    var money = day * 500;
+
+    alert("Booking Successful! Total = " + money + " tk");
+
+}
+</script>
+    </body>
+</html>
